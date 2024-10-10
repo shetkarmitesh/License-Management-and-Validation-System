@@ -1,0 +1,49 @@
+{% extends "admin/base.html" %}
+{% load static %}
+            {% block mainsection %}
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Articles">Request</h1>
+                </div>
+                <div class="report-body">
+                    <div class="report-topic-heading">
+                        
+                        <h3 class="t-op">User</h3>
+                        <h3 class="t-op">Licecnce Key</h3>
+                        <h3 class="t-op">Created Date</h3>
+                        <h3 class="t-op">Expiration Date</h3>
+                        <h3 class="t-op">Status</h3>
+
+                    </div>
+
+                    <div class="items">
+                        {% for item in LicenseDetails %}
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl">{{item.name}}</h3>
+                            <h3 class="t-op-nextlvl">{{item.licenseKey}}</h3>
+                            <h3 class="t-op-nextlvl">{{item.createdAt}}</h3>
+                            <h3 class="t-op-nextlvl">{{item.expirationDate}}</h3>
+
+                            <div class="dropdown">
+                                <select class="t-op-nextlvl label-tag" id="statusDropdown" onchange="updateStatus('{{ item.licenseKey }}', this.value)">
+                                    <option value="pending" {% if item.status == 'pending' %}selected{% endif %}>Pending</option>
+                                    <option value="approved" {% if item.status == 'approved' %}selected{% endif %}>Approved</option>
+                                    <option value="failed" {% if item.status == 'failed' %}selected{% endif %}>Failed</option>
+                                </select>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- Add more items as needed -->
+                    </div>
+                </div>
+            </div>
+      
+
+    <script src="{% static 'administrator/js/index.js' %}"></script>
+    <script>
+        const csrfToken = '{{ csrf_token }}'; // Django template tag
+    </script>
+    {% load sweetify %}
+          
+    {% sweetify %}
+    {% endblock mainsection %}

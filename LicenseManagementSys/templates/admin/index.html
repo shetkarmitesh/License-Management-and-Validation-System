@@ -1,0 +1,79 @@
+{% extends "admin/base.html" %}
+{% load static %}
+            {% block mainsection %}
+            <div class="box-container">
+                <div class="box box1">
+                    <div class="text">
+                        <h2 class="topic-heading">60.5k</h2>
+                        <h2 class="topic">Article Views</h2>
+                    </div>
+                    <img src="{% static 'administrator/images/views.png' %}" alt="Views">
+                </div>
+                
+                <div class="box box2">
+                    <div class="text">
+                        <h2 class="topic-heading">150</h2>
+                        <h2 class="topic">Likes</h2>
+                    </div>
+                    <img src="{% static 'administrator/images/likes.png' %}" alt="likes">
+                </div>
+                <div class="box box3">
+                    <div class="text">
+                        <h2 class="topic-heading">320</h2>
+                        <h2 class="topic">Comments</h2>
+                    </div>
+                    <img src="{% static 'administrator/images/comments.png' %}" alt="comments">
+                </div>
+                <div class="box box4">
+                    <div class="text">
+                        <h2 class="topic-heading">70</h2>
+                        <h2 class="topic">Published</h2>
+                    </div>
+                    <img src="{% static 'administrator/images/published.png' %}" alt="published">
+                </div>
+            </div>
+
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Articles">Recent Requests</h1>
+                    <a href="{% url 'requests'%}" >
+                        <button class="view">View All</button>
+                    </a>
+                </div>
+
+                <div class="report-topic-heading">
+                        
+                    <h3 class="t-op">User</h3>
+                    <h3 class="t-op">Licecnce Key</h3>
+                    <h3 class="t-op">Created Date</h3>
+                    <h3 class="t-op">Expiration Date</h3>
+                    <h3 class="t-op">Status</h3>
+
+                </div>
+
+                <div class="items">
+                    {% for item in LicenseDetails %}
+                    <div class="item1">
+                        <h3 class="t-op-nextlvl">{{item.name}}</h3>
+                        <h3 class="t-op-nextlvl">{{item.licenseKey}}</h3>
+                        <h3 class="t-op-nextlvl">{{item.createdAt}}</h3>
+                        <h3 class="t-op-nextlvl">{{item.expirationDate}}</h3>
+
+                        <div class="dropdown">
+                            <select class="t-op-nextlvl label-tag" id="statusDropdown" onchange="updateStatus('{{ item.licenseKey }}', this.value)">
+                                <option value="pending" {% if item.status == 'pending' %}selected{% endif %}>Pending</option>
+                                <option value="approved" {% if item.status == 'approved' %}selected{% endif %}>Approved</option>
+                                <option value="failed" {% if item.status == 'failed' %}selected{% endif %}>Failed</option>
+                            </select>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- Add more items as needed -->
+                </div>
+            </div>
+            <h1>License Status Distribution</h1>
+                <img src="data:image/png;base64,{{ img_str }}" alt="License Status Pie Chart">
+            {% load sweetify %}
+          
+            {% sweetify %}
+            {% endblock mainsection %}

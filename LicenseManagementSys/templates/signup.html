@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block mainsection %}
+{% load static %}
+<div class="wrapper">
+    <div class="title-text">
+      <div class="title signup">Signup Form</div>
+    </div>
+    <div class="form-container">
+      <div class="slide-controls">
+        <label for="signup" class="slide signup">Signup</label>
+        <div class="slider-tab"></div>
+      </div>
+      <div class="form-inner">
+       
+        <form action="signup"  method="post" class="signup">
+            {% csrf_token %}
+          <div class="field">
+            <input type="text" name="first-name" placeholder="First Name" required>
+          </div>
+          <div class="field">
+            <input type="text" name="last-name" placeholder="Last Name" required>
+          </div>
+          <div class="field">
+            <input type="text" name="email-address" placeholder="Email Address" required>
+          </div>
+          <div class="field">
+            <label for="date-input">From</label>
+            <input type="date" id="date-input" name="createDate" placeholder="from" required>
+          </div>
+          <br>
+          <div class="field">
+            <label for="date-input">Device No</label>
+            <input type="text" id="date-input" name="deviceNo" placeholder="Device No" required>
+          </div>
+          <br>
+          <div class="field">
+            <input type="password" name="password" placeholder="Password" required>
+          </div>
+          <div class="field">
+            <input type="password" name="passwordC" placeholder="Confirm password" required>
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Signup">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% load sweetify %}
+          
+	{% sweetify %}
+{% endblock mainsection %}

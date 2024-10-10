@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block mainsection %}
+{% load static %}
+<div class="wrapper" style="width:auto; height:auto">
+    <div class="title-text">
+      <div class="title signup">Profile</div>
+    </div>
+    <div class="form-container">
+      <div class="slide-controls">
+        <label for="signup" class="slide signup">Profile</label>
+        <div class="slider-tab"></div>
+      </div>
+      <div class="form-inner">
+       
+        <form  class="signup">
+      
+        
+          <div class="field">
+            <div class="field">
+  
+              <span>Name : </span> <h5>{{licenseDetails.name}}</h5>
+            </div>
+            <span>License Key :</span>  <h5>{{licenseDetails.licenseKey}}</h5>
+          </div>
+          <br>
+          <div class="field">
+
+            <span>Email : </span> <h5>{{licenseDetails.email}}</h5>
+          </div>
+        
+
+         
+          <div class="slide-controls">
+            <label for="signup" class="slide signup">
+                <a class="dropdown-item" href="{% url 'logout'%}" >Logout
+              </a>
+
+            </label>
+          </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock mainsection %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block mainsection %}
+{% load static %}
+<div class="wrapper">
+    <div class="title-text">
+      <div class="title login">Login Form</div>
+    </div>
+    <div class="form-container">
+      <div class="slide-controls">
+        <label for="login" class="slide login">Login</label>
+        <div class="slider-tab"></div>
+      </div>
+      <div class="form-inner">
+        <form action="login" method="post" class="login">
+          {% csrf_token %}
+
+          <div class="field">
+            <input type="text" name="email-address" placeholder="Email Address" required>
+          </div>
+          <div class="field">
+            <input type="password" name="password" placeholder="Password" required>
+          </div>
+          <div class="field">
+            <input type="text" name="deviceNo" placeholder="deviceNo" required>
+          </div>
+         
+          <div class="pass-link"><a href="#">Forgot password?</a></div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Login">
+          </div>
+          <div class="signup-link">Not a member? <a href="{% url 'signup'%}">Signup now</a></div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+
+{% endblock mainsection %}

@@ -1,0 +1,25 @@
+{% extends "admin/base.html" %}
+{% load static %}
+            {% block mainsection %}
+            <div class="profile-container">
+                <div class="profile-header">
+                    <img src="{% static 'administrator/images/profile.png' %}" class="nav-img" alt="profile">
+
+                    <h1 class="profile-name">{{request.user.first_name}} {{request.user.last_name}}</h1>
+                    <p class="profile-title">Staff</p>
+                </div>
+                <div class="profile-bio">
+                    <h2>About Me</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel libero id nulla laoreet vulputate.</p>
+                </div>
+                <div class="profile-contact">
+                    <h2>Contact Information</h2>
+                    <p>Email: {{request.user.email}}</p>
+                    <p>Phone: (123) 456-7890</p>
+                </div>
+            </div>
+            
+            {% load sweetify %}
+          
+            {% sweetify %}
+            {% endblock mainsection %}

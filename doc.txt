@@ -1,0 +1,39 @@
+create vritual env
+ Install virtual environment using : pip install virtualenvwrapper-win
+
+ 
+  creating virtual environment : python -m venv myenv
+
+  activating the virtaul environment : .\myenv\Scripts\activate
+
+  We are done with our virtaul environment now we have to setup django
+
+  instll django : pip install Django
+django-admin startproject LicenseManagementSys 
+   creating project  : 
+ project has been created move to the project : cd NewsLicenseManagementSysBit
+
+ lets test the project is running or not using : python manage.py runserver
+
+creating app : python manage.py startapp ClientSideApp,CentralServerapp
+
+make migrations : 
+    python manage.py makemigrations
+    python manage.py migrate
+
+include app in main project url: path('', include ("ClientSideApp.urls")), 
+
+ 
+  and the website is rendering to the index page but it is not rendering because we haved to define in settings.py file the template directory
+'DIRS': [os.path.join(BASE_DIR,'templates')],
+
+ now we have to link the css and other static files 
+ 
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'static')
+]
+STATIC_ROOT = os.path.join(BASE_DIR,'assets')
+
+now create folder static and paste all folder like css js
+
+run command to : python manage.py collectstatic
